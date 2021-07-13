@@ -1,7 +1,25 @@
 import React, { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-const Question = () => {
-  return <h2>question component</h2>;
+
+const Question = ({ id, title, info }) => {
+  const [showAnswer, setshowAnswer] = useState(false);
+
+  const toggleView = () => {
+    setshowAnswer(!showAnswer);
+  }
+
+  console.log(showAnswer);
+
+  return (
+    <article className="question">
+      <header>
+        <h4>{title}</h4>
+        <button className="btn" onClick={toggleView} > {showAnswer ? <AiOutlineMinus /> : <AiOutlinePlus />}</button>
+      </header>
+
+      <p> {showAnswer ? info : ''} </p>
+    </article>
+  );
 };
 
 export default Question;
