@@ -4,20 +4,15 @@ import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 const Question = ({ id, title, info }) => {
   const [showAnswer, setshowAnswer] = useState(false);
 
-  const toggleView = () => {
-    setshowAnswer(!showAnswer);
-  }
-
-  console.log(showAnswer);
-
   return (
     <article className="question">
       <header>
         <h4>{title}</h4>
-        <button className="btn" onClick={toggleView} > {showAnswer ? <AiOutlineMinus /> : <AiOutlinePlus />}</button>
+        {/* if showanswer iis true show minus icon, otherwise plus icon */}
+        <button className="btn" onClick={() => setshowAnswer(!showAnswer)}> {showAnswer ? <AiOutlineMinus /> : <AiOutlinePlus />} </button>
       </header>
-
-      <p> {showAnswer ? info : ''} </p>
+      {/* if show answer is true show paragraph */}
+      {showAnswer && <p>{info}</p>}
     </article>
   );
 };
